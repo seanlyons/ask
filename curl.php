@@ -13,8 +13,10 @@ while (TRUE) {
     go( $head );
 
     for($i = 0; $i <= 1800; $i++) {
-        echo "$i\n";
-		sleep(1);
+        if ($i % 100 == 0) {
+            echo date(DATE_RFC2822) . " - $i\n";
+		}
+        sleep(1);
     }
 }
 
@@ -51,6 +53,6 @@ print_r($md);
 print_r($fixed);
     $merged = array_merge($md, $fixed);
 	$string = implode("\n", $merged);
-	$string .= "\n\n";
+	$string .= "\n";
 	file_put_contents('master_doc.txt', $string);
 }
